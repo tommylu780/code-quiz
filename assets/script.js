@@ -1,6 +1,6 @@
 // Variables for page elements
 // Time and Score
-var timeEl = document.querySelector(".time");
+var timeEl = document.querySelector("p.time");
 var secondsLeft = 10;
 var scoreEl = document.querySelector('#score');
 
@@ -78,7 +78,7 @@ function setTime() {
 }
 // Start quiz with timer
 function startQuiz() {
-    introEl.style.display = "none";
+    //introEl.style.display = "none";
     questionsEl.style.display = "block";
     questionCount = 0;
 
@@ -95,6 +95,36 @@ if(id < questions.length){
     ansBtn4.textContent = questions[id].answers[3];
 }
 }
+// Check answer and move to next question
+function checkAnswer(event) {
+    event.preventDefault();
+    // Show answer if correct or not
+    rwMessageEl.style.display = "block";
+    let p = document.createElement("p");
+    rwMessageEl.appendChild(p);
+    // Time out after 1s
+    setTimeout(function () {
+        p.style.display = 'none';
+    }, 1000);
+
+    // Answer check
+    if(questions[questionCount].correctAnswer === event.target.value){
+        p.textContent = 'Correct!';
+    }else if (questions[questionCount].correctAnswer !== event.target.value){
+        secondsLeft = secondsLeft - 10;
+        p.textContent = 'Wrong!';
+    }
+    //Increment so the questions index is increased
+    if(questionCount < questions.length){
+        questionCount++;
+    }
+    // Button answer clicked next one come up
+    setQuestion(questionCount);
+}
 
 // Event listener
 btnStart.addEventListener("click", startQuiz);
+// Check answer loop
+ansBtn.forEach(item =>{
+    item.addEventListener('click', checkAnswer);
+});
