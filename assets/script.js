@@ -4,6 +4,7 @@ var timeEl = document.querySelector("p.time");
 var secondsLeft = 10;
 var scoreEl = document.querySelector('#score');
 
+
 // Sections
 //~ Section intro
 const introEl = document.querySelector('#intro');
@@ -76,12 +77,12 @@ const questions = [ // array of objects
 function setTime() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
-        timeEl.textContent = 'Time: ' + secondsLeft +'s';
+        timeEl.textContent = 'Time: ' + secondsLeft + 's';
 
         if (secondsLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
-            //questionsEl.style.display = "none";
-            //finalEl.style.display = "block";
+            questionsEl.style.display = "none";
+            finalEl.style.display = "block";
             scoreEl.textContent = secondsLeft;
         }
     }, 1000);
@@ -96,21 +97,22 @@ function startQuiz() {
     setQuestion(questionCount);
 }
 // Set question, count and display next question
-function setQuestion(id){
-if(id < questions.length){
-    questionEl.textContent = questions[id].question;
-    ansBtn1.textContent = questions[id].answers[0];
-    ansBtn2.textContent = questions[id].answers[1];
-    ansBtn3.textContent = questions[id].answers[2];
-    ansBtn4.textContent = questions[id].answers[3];
-}
+function setQuestion(id) {
+    if (id < questions.length) {
+        questionEl.textContent = questions[id].question;
+        ansBtn1.textContent = questions[id].answers[0];
+        ansBtn2.textContent = questions[id].answers[1];
+        ansBtn3.textContent = questions[id].answers[2];
+        ansBtn4.textContent = questions[id].answers[3];
+        
+    }
 }
 // Check answer and move to next question
 function checkAnswer(event) {
     event.preventDefault();
     // Show answer if correct or not
     rwMessageEl.style.display = "block";
-    let p = document.createElement("p");
+    var p = document.createElement("p");
     rwMessageEl.appendChild(p);
     // Time out after 1s
     setTimeout(function () {
@@ -118,23 +120,34 @@ function checkAnswer(event) {
     }, 1000);
 
     // Answer check
-    if(questions[questionCount].correctAnswer === event.target.value){
+    if (questions[questionCount].correctAnswer === event.target.value) {
         p.textContent = 'Correct!';
-    }else if (questions[questionCount].correctAnswer !== event.target.value){
-        secondsLeft = secondsLeft - 10;
+        scoreEl.textContent++;
+        secondsLeft += 10;
+        console.log(scoreEl.textContent);
+    } else if (questions[questionCount].correctAnswer !== event.target.value) {
+        // secondsLeft = secondsLeft - 10;
         p.textContent = 'Wrong!';
     }
     //Increment so the questions index is increased
-    if(questionCount < questions.length){
+    if (questionCount < questions.length) {
         questionCount++;
     }
     // Button answer clicked next one come up
     setQuestion(questionCount);
 }
+// Add score
+// function addScore(event) {
+//     event.preventDefault();
+//     finalEl.style.display = 'none';
+//     highScore.style.display = 'block';
+
+//     var in
+// }
 
 // Event listener
 btnStart.addEventListener("click", startQuiz);
 // Check answer loop
-ansBtn.forEach(item =>{
+ansBtn.forEach(item => {
     item.addEventListener('click', checkAnswer);
 });
