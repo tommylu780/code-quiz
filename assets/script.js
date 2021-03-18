@@ -5,7 +5,7 @@ var secondsLeft = 10;
 var scoreEl = document.querySelector('#score');
 
 // Sections
-// Section intro
+//~ Section intro
 const introEl = document.querySelector('#intro');
 // Question
 var questionsEl = document.querySelector('#questions');
@@ -26,6 +26,18 @@ var ansBtn1 = document.querySelector('#answer1');
 var ansBtn2 = document.querySelector('#answer2');
 var ansBtn3 = document.querySelector('#answer3');
 var ansBtn4 = document.querySelector('#answer4');
+
+//~ Section Final
+const finalEl = document.querySelector('#final');
+// Enter Name
+var playerName = document.querySelector('#initials');
+//~ Section highscore
+const highScore = document.querySelector('#highscore');
+// Order list
+var scoreListEl = document.querySelector('#score-list');
+// Array score
+var scoreList = [];
+
 
 // Object for questions
 const questions = [ // array of objects
