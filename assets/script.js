@@ -76,7 +76,7 @@ const questions = [ // array of objects
 function setTime() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
-        timeEl.textContent = `Time:${secondsLeft}s`;
+        timeEl.textContent = 'Time: ' + secondsLeft +'s';
 
         if (secondsLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
@@ -88,7 +88,7 @@ function setTime() {
 }
 // Start quiz with timer
 function startQuiz() {
-    //introEl.style.display = "none";
+    introEl.style.display = "none";
     questionsEl.style.display = "block";
     questionCount = 0;
 
