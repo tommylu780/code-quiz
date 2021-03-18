@@ -15,8 +15,6 @@ var questionEl = document.querySelector('#question');
 var questionCount = 0;
 // Answer right or wrong
 const rwMessageEl = document.querySelector('#rw-message');
-// Final
-const finalEl = document.querySelector('#final');
 
 //Buttons
 var btnStart = document.querySelector('#start');
