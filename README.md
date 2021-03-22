@@ -1,6 +1,6 @@
 # code-quiz
 ## Description
-Multiple-choice questions application with answer time limited. If answer correctly, time will be increased as your score.<br>
+Multiple-choice questions application with answer time limited. If answer correctly, time will be increased and decrease if incorectly.<br>
 Deployed app: https://tommylu780.github.io/code-quiz/
 ## User Story
 ```
