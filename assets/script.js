@@ -50,15 +50,15 @@ var scoreList = [];
 const questions = [ // array of objects
     {
         // question 0
-        question: "Commonly used data types do NOT include:",
-        answers: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-        correctAnswer: "2"
+        question: "Which of these tags would display the largest text?",
+        answers: ["1. <p>", "2. <h2>", "3. <h6>", "4. <h4>"],
+        correctAnswer: "1"
     },
     {
         // question 1
-        question: "The condition in an if / else statement is enclosed within ____.",
-        answers: ["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
-        correctAnswer: "1"
+        question: "What is the difference between HTML and CSS?",
+        answers: ["1. HTML gives a webpage structure. CSS provides styling.", "2. CSS is one type of HTML.", "3. CSS structures a webpage. HTML strictly provides styling.", "4. There is no difference."],
+        correctAnswer: "0"
     },
     {
         // question 2
@@ -69,7 +69,7 @@ const questions = [ // array of objects
     {
         // question 3
         question: "String values must be enclosed within ____ when being assigned to variables.",
-        answers: ["1. commmas", "2. curly brackets", "3. quotes", "4. parentheses"],
+        answers: ["1. commmas", "2. parentheses", "3. curly brackets", "4. quotes"],
         correctAnswer: "2"
     },
     {

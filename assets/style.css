@@ -34,6 +34,9 @@ header .time{
     display: flex;
     justify-content: center;
 }
+.top{
+    width: 35%;
+}
 /* section */
 section{
     width: 400px;
