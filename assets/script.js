@@ -46,6 +46,7 @@ var scoreListEl = document.querySelector('#score-list');
 var scoreList = [];
 
 
+
 // Object for questions
 const questions = [ // array of objects
     {
@@ -90,6 +91,7 @@ function setTime() {
         if (secondsLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
             questionsEl.style.display = "none";
+            viewBtn.style.display = "block";
             finalEl.style.display = "block";
             scoreEl.textContent = secondsLeft;
         }
@@ -99,6 +101,7 @@ function setTime() {
 function startQuiz() {
     introEl.style.display = "none";
     questionsEl.style.display = "block";
+    viewBtn.style.display = "none";
     questionCount = 0;
 
     setTime();
@@ -134,7 +137,6 @@ function checkAnswer(event) {
         secondsLeft += 10;
         console.log(scoreEl.textContent);
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
-        // secondsLeft = secondsLeft - 10;
         p.textContent = 'Wrong!';
     }
     //Increment so the questions index is increased
@@ -163,7 +165,7 @@ function addScore(event) {
     scoreListEl.innerHTML = "";
     for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
-        li.textContent = `${scoreList[i].player} : ${scoreList[i].score}`;
+        li.textContent = scoreList[i].player + ": " + scoreList[i].score;
         scoreListEl.append(li);
     }
     //Add to storage
@@ -181,7 +183,7 @@ function displayScores() {
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
     // If scores were retrieved from localStorage, update the scorelist array to it
-    if (storedScoreList !== null) {
+    if (!storedScoreList) {
         scoreList = storedScoreList;
     }
 }
@@ -220,4 +222,5 @@ viewBtn.addEventListener("click", function () {
         alert('no scores to show');
         introEl.style.display = 'block';
     }
+
 });
