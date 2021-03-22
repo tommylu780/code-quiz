@@ -222,5 +222,4 @@ viewBtn.addEventListener("click", function () {
         alert('no scores to show');
         introEl.style.display = 'block';
     }
-
 });
