@@ -1,7 +1,7 @@
 // Variables for page elements
 // Time and Score
 var timeEl = document.querySelector("p.time");
-var secondsLeft = 10;
+var secondsLeft = 75;
 var scoreEl = document.querySelector('#score');
 
 
@@ -43,7 +43,7 @@ const highScoreEl = document.querySelector('#highscore');
 // Order list
 var scoreListEl = document.querySelector('#score-list');
 // Array score
-var scoreList = [];
+var scoreList = JSON.parse(localStorage.getItem("scoreList")) || [];
 
 
 
@@ -133,10 +133,8 @@ function checkAnswer(event) {
     // Answer check
     if (questions[questionCount].correctAnswer === event.target.value) {
         p.textContent = 'Correct!';
-        scoreEl.textContent++;
-        secondsLeft += 10;
-        console.log(scoreEl.textContent);
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
+        secondsLeft = secondsLeft - 10;
         p.textContent = 'Wrong!';
     }
     //Increment so the questions index is increased
@@ -205,7 +203,7 @@ smtScoreBtn.addEventListener("click", addScore);
 backBtn.addEventListener("click", function () {
     highScoreEl.style.display = 'none';
     introEl.style.display = 'block';
-    secondsLeft = 10;
+    secondsLeft = 75;
     timeEl.textContent = 'Time: ' + secondsLeft + 's';
 });
 //Clear score button
